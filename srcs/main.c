@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nobrien <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/06 15:46:35 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 15:17:06 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-void	set_bg(void *mlx, void *window)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < HEIGHT)
-	{
-		j = 0;
-		while (j < WIDTH)
-		{
-			mlx_pixel_put(mlx, window, j, i, 0xffffff);
-			j++;
-		}
-		i++;
-	}
-}
 
 float		ft_fmap(float input, float input_start, float input_end, float output_start, float output_end)
 {
@@ -42,7 +24,7 @@ void		set_frac(t_world *w, float *ca, float *cb)
 		*ca = ft_fmap(w->mouse.x, 0, WIDTH, -1, 1);
 		*cb = ft_fmap(w->mouse.y, 0, HEIGHT, -1, 1);
 	}
-}
+} 
 
 void		draw_mandelbrot(t_world *w)
 {
@@ -76,7 +58,7 @@ void		draw_mandelbrot(t_world *w)
 			{
 				aa = a * a;
 		        bb = b * b;
-		        if (aa + bb > 30.0)//can be dynamic, it's how many it'll draw, could do > x && < y to go deeper?
+		        if (aa + bb > 6.0)//can be dynamic, it's how many it'll draw, could do > x && < y to go deeper?
 		        	break;
 		        twoab = 2.0 * a * b;
 		    	a = aa - bb + ca;
@@ -87,9 +69,11 @@ void		draw_mandelbrot(t_world *w)
 			bright = ft_fmap(sqrt(bright), 0, 1, 0, w->frac.effect);
 			if (n == maxiter)
 				bright = w->frac.color;
-			mlx_pixel_put(w->mlx, w->window, x, y, bright);
+			img_pixel_put(&w->image, x, y, bright);
+			// mlx_pixel_put(w->mlx, w->window, x, y, bright);
 		}
 	}
+	mlx_put_image_to_window(w->mlx, w->window, w->image.image, 0, 0);
 }
 
 int			key_pressed_hook(int key, t_world *w)
@@ -115,9 +99,9 @@ int			key_pressed_hook(int key, t_world *w)
 		w->cam.top -= 0.03;
 	}
 	else if (key == 12)
-		w->cam.s += 0.1; //need to do some adjusting on x and y to make it zoom to middle
+		w->cam.s *= 1.05; //need to do some adjusting on x and y to make it zoom to middle
 	else if (key == 14)
-		w->cam.s -= 0.1; //need to do some adjusting on x and y to make it zoom to middle
+		w->cam.s *= 0.95; //need to do some adjusting on x and y to make it zoom to middle
 	else if (key == 8)
 		w->frac.color = (int)rand();
 	else if (key == 53)
@@ -130,7 +114,7 @@ int			key_pressed_hook(int key, t_world *w)
 		w->frac.frac = 0;
 	else if (key == 19)
 		w->frac.frac = 1;
-
+	clear_image(w);
 	draw_mandelbrot(w);
 	return (0);
 }
@@ -143,6 +127,7 @@ int		mouse_moved_hook(int x, int y, t_world *w)
 			w->mouse.x = x;
 		if (y > 0 && y < HEIGHT)
 			w->mouse.y = y;
+		clear_image(w);
 		draw_mandelbrot(w);
 	}
 	return (0);
@@ -154,7 +139,7 @@ int		main(void)
 
 	w.mlx = mlx_init();
 	w.window = mlx_new_window(w.mlx, WIDTH, HEIGHT, WINDOW_NAME);
-	w.cam.s = 1;
+	w.cam.s = 3;
 	w.cam.left = -1;
 	w.cam.right = 1;
 	w.cam.top = -1;
@@ -164,9 +149,12 @@ int		main(void)
 	w.frac.frac = 0;
 	w.mouse.x = 0;
 	w.mouse.y = 0;
+	init_image(&w);
 	mlx_hook(w.window, 2, 0, key_pressed_hook, &w);
 	mlx_hook(w.window, 6, 0, mouse_moved_hook, &w);
+	clear_image(&w);
 	draw_mandelbrot(&w);
+	key_menu();
 
 
 

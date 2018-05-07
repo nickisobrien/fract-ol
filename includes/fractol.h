@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/16 18:23:07 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 15:09:40 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ typedef struct	s_fractal
 	int			frac;
 }				t_fractal;
 
+typedef struct	s_image
+{
+	void	*image;
+	void	*ptr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}				t_image;
+
 typedef struct	s_world
 {
 	void		*mlx;
@@ -52,6 +61,15 @@ typedef struct	s_world
 	t_camera	cam;
 	t_fractal	frac;
 	t_mouse		mouse;
+	t_image		image;
 }				t_world;
+
+
+void	init_image(t_world *w);
+void	img_pixel_put(t_image *img, int x, int y, int color);
+void	clear_image(t_world *w);
+
+void	key_menu(void);
+void	usage(void);
 
 #endif
