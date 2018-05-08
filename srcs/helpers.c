@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   usage.c                                            :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 15:02:42 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 18:19:15 by nobrien          ###   ########.fr       */
+/*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
+/*   Updated: 2018/05/07 18:47:40 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	usage(void)
+float		ft_fmap(float input, float input_start, float input_end, float output_start, float output_end)
 {
-	ft_printf("Usage: ./fractol [fractal]\n");
-	ft_printf("Fractals:\n-(m)andelbrot\n-(j)ulia\n-(t)ree\n");
+	return (output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start));
 }
 
-void	key_menu(void)
+void		set_frac(t_world *w, float *ca, float *cb)
 {
-	ft_printf("Move: 'W', 'A', 'S', 'D'\n");
-	ft_printf("Zoom: (in)'E', (out)'Q', MOUSE WHEEL\n");
-	ft_printf("Color: 'C'\n");
-	ft_printf("Mode: (normal)'Z', (psychedelic)'X'\n");
-	ft_printf("Fractal:\n(mandelbrot)'1'\n(julia)'2'\n");
+	if (w->frac.frac == 1)
+	{
+		*ca = ft_fmap(w->mouse.x, 0, WIDTH, -1, 1);
+		*cb = ft_fmap(w->mouse.y, 0, HEIGHT, -1, 1);
+	}
 }

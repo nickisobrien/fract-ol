@@ -4,7 +4,7 @@ RM = /bin/rm -f
 FLAGS = -Wall -Wextra -Werror
 
 # fractol
-FILES = main image usage
+FILES = main image usage hooks draw helpers
 INCLUDE = -I ./includes/
 SRC_DIR := ./srcs/
 OBJ_DIR := ./objs/
