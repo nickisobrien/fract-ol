@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 22:03:03 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 22:07:51 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct	s_mouse
 typedef struct	s_fractal
 {
 	unsigned	color;
-	int			effect;
+	int			effect_b;
 	int			frac;
 }				t_fractal;
 
