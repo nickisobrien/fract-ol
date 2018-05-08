@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 00:32:19 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 01:02:54 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct	s_world
 
 void	init_image(t_world *w);
 void	img_pixel_put(t_image *img, int x, int y, int color);
-void	clear_image(t_world *w);
+void	clear_image(t_image *image);
 
 void	key_menu(void);
 void	usage(void);

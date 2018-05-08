@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:28:59 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 23:19:47 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 00:55:48 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	img_pixel_put(t_image *img, int x, int y, int color)
 		*(int *)(img->ptr + (int)((y * WIDTH + x) * img->bpp)) = color;
 }
 
-void	clear_image(t_world *w)
+void	clear_image(t_image *image)
 {
-	ft_bzero(w->image.ptr, WIDTH * HEIGHT * w->image.bpp);
+	ft_bzero(image->ptr, WIDTH * HEIGHT * image->bpp);
 }

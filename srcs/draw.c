@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 00:40:22 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 01:00:37 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void		draw(t_world *w)
 	double	imagstart;
 	double	imag;
 
+	clear_image(&w->image);
 	real = 0 * w->cam.s - WIDTH / 2.0 * w->cam.s + w->cam.x;
 	imagstart = 0 * w->cam.s - HEIGHT / 2.0 * w->cam.s + w->cam.y;
-	clear_image(w);
 	a = -1;
 	while (++a < WIDTH)
 	{
