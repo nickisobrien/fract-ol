@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 22:07:37 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 22:13:49 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int		key_pressed_hook(int key, t_world *w)
 	else if (key == 53)
 		exit(0);
 	else if (key == 6)
-		w->frac.effect_b = 255;
+		w->frac.eb = 255;
 	else if (key == 7)
-		w->frac.effect_b = 0xffffff;
+		w->frac.eb = 0xffffff;
 	else if (key == 18)
 		w->frac.frac = 0;
 	else if (key == 19)

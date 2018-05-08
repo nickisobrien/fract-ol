@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 22:07:58 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 22:13:57 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		set_color(t_world *w, int color, int a, int b)
 	float bright;
 
 	bright = ft_fmap(color, 0, MAX_ITER, 0, 1);
-	bright = ft_fmap(sqrt(bright), 0, 1, 0, w->frac.effect_b);
+	bright = ft_fmap(sqrt(bright), 0, 1, 0, w->frac.eb);
 	if (color == MAX_ITER)
 		bright = w->frac.color;
 	img_pixel_put(&w->image, a, b, bright);
