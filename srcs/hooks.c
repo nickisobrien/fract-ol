@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 01:20:12 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 02:48:07 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ int		mouse_wheel_hook(int button, int x, int y, t_world *w)
 {
 	(void)x;
 	(void)y;
+	if (button == 1)
+	{
+		if (w->mouse.active)
+			w->mouse.active = 0;
+		else
+			w->mouse.active = 1;
+	}
 	if (button == 4)
 		w->cam.s *= ZOOM_SPEED;
 	if (button == 5)
@@ -58,6 +65,8 @@ int		mouse_wheel_hook(int button, int x, int y, t_world *w)
 
 int		mouse_moved_hook(int x, int y, t_world *w)
 {
+	if (!w->mouse.active)
+		return (0);
 	if (w->frac.frac == 1)
 	{
 		if (x > 0 && x < WIDTH)

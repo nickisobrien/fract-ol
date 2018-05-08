@@ -6,21 +6,20 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 01:06:45 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 02:41:28 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FRACTOL_H
 # define __FRACTOL_H
 
-#define _GNU_C_SOURCE
 # include "../libft/includes/libft.h"
 # include "../minilibx/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # include <pthread.h>
 
-# define WIDTH 1280
+# define WIDTH 720
 # define HEIGHT 720
 # define WINDOW_NAME "Window"
 # define ZOOM_SPEED 1.05
@@ -39,8 +38,9 @@ typedef struct	s_camera
 
 typedef struct	s_mouse
 {
-	float x;
-	float y;
+	float	x;
+	float	y;
+	int		active;
 }				t_mouse;
 
 typedef struct	s_fractal
@@ -68,6 +68,14 @@ typedef struct	s_world
 	t_mouse		mouse;
 	t_image		image;
 }				t_world;
+
+typedef	struct	s_data
+{
+	float	imag;
+	float	real;
+	int		a;
+	t_world	*w;
+}				t_data;
 
 
 void	init_image(t_world *w);

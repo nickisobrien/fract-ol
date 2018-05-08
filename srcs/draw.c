@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 01:04:49 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 02:49:36 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			draw_mandelbrot(t_world *w, float x, float y)
 		xx = x * x;
 		yy = y * y;
 		if (xx + yy > 6.0)
-			return (MAX_ITER);
+			return (iter);
 		y = (2.0 * x * y) + zy;
 		x = xx - yy + zx;
 	}
@@ -52,7 +52,7 @@ int			draw_burningship(float x, float y)
 		zxzx = zx * zx;
 		zyzy = zy * zy;
 		if (zxzx + zyzy > 6.0)
-			return (MAX_ITER);
+			return (iter);
 		zy = fabsf(2 * zx * zy) + y;
 		zx = fabsf(zxzx - zyzy + x);
 	}
@@ -63,21 +63,39 @@ void		set_color(t_world *w, int color, int a, int b)
 {
 	float bright;
 
-	bright = ft_fmap(color, 0, MAX_ITER, 0, 1);
-	bright = ft_fmap(sqrt(bright), 0, 1, w->frac.eb, LASTCOLOR);
+	bright = ft_fmap(color, 0, MAX_ITER, 0, 1);//heavy?
+	bright = ft_fmap(sqrt(bright), 0, 1, w->frac.eb, LASTCOLOR);//heavy?
 	if (color == MAX_ITER)
 		bright = w->frac.color;
 	img_pixel_put(&w->image, a, b, bright);
 }
 
+void			*draw_thread(void *obj)
+{
+	int color;
+	int b;
+	t_data data = *(t_data *)obj;
+
+	b = -1;
+	while (++b < HEIGHT)
+	{
+		if (data.w->frac.frac == 0 || data.w->frac.frac == 1)
+			color = draw_mandelbrot(data.w, data.real, data.imag);
+		else if (data.w->frac.frac == 2)
+			color = draw_burningship(data.real, data.imag);
+		set_color(data.w, color, data.a, b);
+		data.imag += data.w->cam.s;
+	}
+	return (NULL);
+}
+
 void		draw(t_world *w)
 {
-	int		a;
-	int		b;
-	int		color;
-	double	real;
-	double	imagstart;
-	double	imag;
+	int			a;
+	float		real;
+	float		imagstart;
+	pthread_t	threads[WIDTH];
+	t_data		data[WIDTH];
 
 	clear_image(&w->image);
 	real = 0 * w->cam.s - WIDTH / 2.0 * w->cam.s + w->cam.x;
@@ -85,18 +103,19 @@ void		draw(t_world *w)
 	a = -1;
 	while (++a < WIDTH)
 	{
-		imag = imagstart;
-		b = -1;
-		while (++b < HEIGHT)
+		data[a].a = a;
+		data[a].real = real;
+		data[a].imag = imagstart;
+		data[a].w = w;
+		if (pthread_create(&threads[a], NULL, &draw_thread, &data[a]))
 		{
-			if (w->frac.frac == 0 || w->frac.frac == 1)
-				color = draw_mandelbrot(w, real, imag);
-			else if (w->frac.frac == 2)
-				color = draw_burningship(real, imag);
-			set_color(w, color, a, b);
-			imag += w->cam.s;
+			ft_printf("Threading error\n");
+			exit (-1);
 		}
 		real += w->cam.s;
 	}
+	a = -1;
+	while (++a < WIDTH)
+		pthread_join(threads[a], NULL);
 	mlx_put_image_to_window(w->mlx, w->window, w->image.image, 0, 0);
 }

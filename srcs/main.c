@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 01:18:38 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 02:42:44 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init(t_world *w, char *board)
 	w->frac.eb = COLORB;
 	w->mouse.x = 0;
 	w->mouse.y = 0;
+	w->mouse.active = 1;
 	init_image(w);
 	mlx_hook(w->window, 2, 0, key_pressed_hook, w);
 	mlx_hook(w->window, 6, 0, mouse_moved_hook, w);
