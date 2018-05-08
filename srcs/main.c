@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 20:27:18 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:01:04 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ void	init(t_world *w, char *board)
 	mlx_hook(w->window, 6, 0, mouse_moved_hook, w);
 	mlx_hook(w->window, 4, 0, mouse_wheel_hook, w);
 	clear_image(w);
-	if (w->frac.frac <= 1)
-		draw_mandelbrot(w);
-	else
-		draw_burningship(w);
+	draw(w);
 	key_menu();
 }
 

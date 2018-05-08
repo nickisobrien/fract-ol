@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 20:27:44 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:05:42 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ int			key_pressed_hook(int key, t_world *w)
 	else if (key == 20)
 		w->frac.frac = 2;
 	clear_image(w);
-	if (w->frac.frac <= 1)
-		draw_mandelbrot(w);
-	else
-		draw_burningship(w);
+	draw(w);
 	return (0);
 }
 
@@ -70,10 +67,7 @@ int		mouse_wheel_hook(int button, int x, int y, t_world *w)
 	if (button == 5)
 		w->cam.s /= ZOOM_SPEED;
 	clear_image(w);
-	if (w->frac.frac <= 1)//dry
-		draw_mandelbrot(w);
-	else
-		draw_burningship(w);
+	draw(w);
 	return (0);
 }
 
@@ -86,10 +80,7 @@ int		mouse_moved_hook(int x, int y, t_world *w)
 		if (y > 0 && y < HEIGHT)
 			w->mouse.y = y;
 		clear_image(w);
-		if (w->frac.frac <= 1)
-			draw_mandelbrot(w);
-		else
-			draw_burningship(w);
+		draw(w);
 	}
 	return (0);
 }

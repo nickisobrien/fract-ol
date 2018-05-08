@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 20:24:55 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:07:00 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ int		key_pressed_hook(int key, t_world *w);
 int		mouse_moved_hook(int x, int y, t_world *w);
 int		mouse_wheel_hook(int button, int x, int y, t_world *w);
 
-void	draw_mandelbrot(t_world *w);
-void	draw_burningship(t_world *w);
+void	draw(t_world *w);
 
 float	ft_fmap(float input, float input_start, float input_end, float output_start, float output_end);
 void	set_frac(t_world *w, float *ca, float *cb);
