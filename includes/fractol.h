@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 21:16:50 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 22:03:03 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void	draw(t_world *w);
 
 float	ft_fmap(float input, float input_start, float input_end, float output_start, float output_end);
 void	set_frac(t_world *w, float *ca, float *cb);
+int		set_board_type(t_world *w, char *board);
 
 #endif

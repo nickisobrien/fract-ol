@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 21:33:52 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 22:01:19 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,17 @@ void		set_frac(t_world *w, float *ca, float *cb)
 		*ca = ft_fmap(w->mouse.x, 0, WIDTH, -1, 1);
 		*cb = ft_fmap(w->mouse.y, 0, HEIGHT, -1, 1);
 	}
+}
+
+int		set_board_type(t_world *w, char *board)
+{
+	if (!ft_strcmp(board, "1"))
+		w->frac.frac = 0;
+	else if (!ft_strcmp(board, "2"))
+		w->frac.frac = 1;
+	else if (!ft_strcmp(board, "3"))
+		w->frac.frac = 2;
+	else
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 21:31:09 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 22:02:53 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	init(t_world *w, char *board)
 {
+	if (!set_board_type(w, board))
+		usage();
 	w->mlx = mlx_init();
 	w->window = mlx_new_window(w->mlx, WIDTH, HEIGHT, WINDOW_NAME);
 	w->cam.s = 5;
@@ -23,14 +25,6 @@ void	init(t_world *w, char *board)
 	w->cam.bottom = 1;
 	w->frac.color = 0xffffff;
 	w->frac.effect = 255;
-	if (!ft_strcmp(board, "1"))
-		w->frac.frac = 0;
-	else if (!ft_strcmp(board, "2"))
-		w->frac.frac = 1;
-	else if (!ft_strcmp(board, "3"))
-		w->frac.frac = 2;
-	else
-		usage();
 	w->mouse.x = 0;
 	w->mouse.y = 0;
 	init_image(w);
