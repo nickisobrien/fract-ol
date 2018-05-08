@@ -6,15 +6,17 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 23:38:33 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 01:20:26 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-float		ft_fmap(float input, float input_start, float input_end, float output_start, float output_end)
+float		ft_fmap(float input, float input_start,
+	float input_end, float output_start, float output_end)
 {
-	return (output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start));
+	return (output_start + ((output_end - output_start) /
+		(input_end - input_start)) * (input - input_start));
 }
 
 void		set_frac(t_world *w, float *ca, float *cb)

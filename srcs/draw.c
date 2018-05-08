@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 01:00:37 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 01:04:49 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			draw_mandelbrot(t_world *w, float x, float y)
 		xx = x * x;
 		yy = y * y;
 		if (xx + yy > 6.0)
-			break ;
+			return (MAX_ITER);
 		y = (2.0 * x * y) + zy;
 		x = xx - yy + zx;
 	}
@@ -52,7 +52,7 @@ int			draw_burningship(float x, float y)
 		zxzx = zx * zx;
 		zyzy = zy * zy;
 		if (zxzx + zyzy > 6.0)
-			break ;
+			return (MAX_ITER);
 		zy = fabsf(2 * zx * zy) + y;
 		zx = fabsf(zxzx - zyzy + x);
 	}

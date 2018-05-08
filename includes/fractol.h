@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 01:02:54 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 01:06:45 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../minilibx/mlx.h"
 # include <stdio.h>
 # include <math.h>
+# include <pthread.h>
 
 # define WIDTH 1280
 # define HEIGHT 720

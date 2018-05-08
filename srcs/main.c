@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 01:03:02 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 01:18:38 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init(t_world *w, char *board)
 	w->cam.s = 0.02;
 	w->cam.x = 0.0;
 	w->cam.y = 0.0;
-	w->frac.color = 0xffffff;//abs((int)random());
+	w->frac.color = 0xffffff;
 	w->frac.eb = COLORB;
 	w->mouse.x = 0;
 	w->mouse.y = 0;
