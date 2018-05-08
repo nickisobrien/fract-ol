@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 22:15:54 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 23:39:22 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define WINDOW_NAME "Window"
 # define ZOOM_SPEED 1.05
 # define MAX_ITER 100
+# define COLORA 0
+# define COLORB 12000000
+# define LASTCOLOR 2000
 
 typedef struct	s_camera
 {

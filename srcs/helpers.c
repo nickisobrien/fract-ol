@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 22:01:19 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 23:38:33 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		set_frac(t_world *w, float *ca, float *cb)
 	}
 }
 
-int		set_board_type(t_world *w, char *board)
+int			set_board_type(t_world *w, char *board)
 {
 	if (!ft_strcmp(board, "1"))
 		w->frac.frac = 0;

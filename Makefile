@@ -33,23 +33,23 @@ $(LFT_LIB):
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@echo [INFO] Lem-in Object Files Directory Created
+	@echo [INFO] Fractol Object Files Directory Created
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	gcc $(FLAGS) $(INCLUDE) $(LFT_INC) -o $@ -c $<
 
 $(NAME): $(OBJ_DIR) $(OFILES)
 	@gcc $(FLAGS) $(OFILES) $(LFT_LINK) $(MINILIBX_LINK) -o $(NAME)
-	@echo [INFO] Lem-in Binary Created
+	@echo [INFO] Fractol Binary Created
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo [INFO] Lem-in Object Files Directory Destroyed
+	@echo [INFO] Fractol Object Files Directory Destroyed
 	@make -C $(LFT_DIR) clean
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo [INFO] Lem-in Binary Destroyed
+	@echo [INFO] Fractol Binary Destroyed
 	@make -C $(LFT_DIR) fclean
 	@make -C $(MINILIBX_DIR)
 
