@@ -6,13 +6,23 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 02:48:07 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 06:03:46 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int		key_pressed_hook(int key, t_world *w)
+static void	set_board(int key, t_world *w)
+{
+	if (key == 18)
+		w->frac.frac = 0;
+	else if (key == 19)
+		w->frac.frac = 1;
+	else if (key == 20)
+		w->frac.frac = 2;
+}
+
+int			key_pressed_hook(int key, t_world *w)
 {
 	if (key == 123 || key == 0)
 		w->cam.x -= MOVE_SPEED;
@@ -27,24 +37,19 @@ int		key_pressed_hook(int key, t_world *w)
 	else if (key == 14)
 		w->cam.s /= ZOOM_SPEED;
 	else if (key == 8)
-		w->frac.color = (int)rand();
+		w->frac.color -= 20;
 	else if (key == 53)
 		exit(0);
 	else if (key == 6)
 		w->frac.eb = COLORA;
 	else if (key == 7)
 		w->frac.eb = COLORB;
-	else if (key == 18)
-		w->frac.frac = 0;
-	else if (key == 19)
-		w->frac.frac = 1;
-	else if (key == 20)
-		w->frac.frac = 2;
+	set_board(key, w);
 	draw(w);
 	return (0);
 }
 
-int		mouse_wheel_hook(int button, int x, int y, t_world *w)
+int			mouse_wheel_hook(int button, int x, int y, t_world *w)
 {
 	(void)x;
 	(void)y;
@@ -63,7 +68,7 @@ int		mouse_wheel_hook(int button, int x, int y, t_world *w)
 	return (0);
 }
 
-int		mouse_moved_hook(int x, int y, t_world *w)
+int			mouse_moved_hook(int x, int y, t_world *w)
 {
 	if (!w->mouse.active)
 		return (0);
