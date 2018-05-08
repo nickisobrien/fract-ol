@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 06:36:59 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 06:57:00 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include <pthread.h>
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 770
+# define HEIGHT 770
 # define WINDOW_NAME "Window"
 # define ZOOM_SPEED 1.05
 # define MAX_ITER 300
@@ -28,7 +28,7 @@
 # define COLORB 12000000
 # define LASTCOLOR 2000
 # define MOVE_SPEED 0.05
-# define THREADS 4
+# define THREADS 20
 
 typedef struct	s_camera
 {
@@ -65,7 +65,6 @@ typedef struct	s_world
 	void		*mlx;
 	void		*window;
 	int			line;
-	int			job;
 	t_camera	cam;
 	t_fractal	frac;
 	t_mouse		mouse;

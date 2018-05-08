@@ -6,13 +6,13 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 06:35:04 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 07:12:24 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int				draw_mandelbrot(t_world *w, float x, float y)
+static int		draw_mandelbrot(t_world *w, float x, float y)
 {
 	float	zx;
 	float	zy;
@@ -36,7 +36,7 @@ int				draw_mandelbrot(t_world *w, float x, float y)
 	return (iter);
 }
 
-int				draw_burningship(float x, float y)
+static int		draw_burningship(float x, float y)
 {
 	float	zx;
 	float	zy;
@@ -110,7 +110,6 @@ void			draw(t_world *w)
 	t_data		data[THREADS];
 
 	i = -1;
-	w->job = 0;
 	clear_image(&w->image);
 	while (++i < THREADS)
 	{
