@@ -40,6 +40,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 	gcc $(FLAGS) $(INCLUDE) $(LFT_INC) -o $@ -c $<
 
 $(NAME): $(OBJ_DIR) $(OFILES)
+	@make -C $(MINILIBX_DIR)
 	@gcc $(FLAGS) $(OFILES) $(LFT_LINK) $(MINILIBX_LINK) -o $(NAME)
 	@echo [INFO] Fractol Binary Created
 
@@ -47,11 +48,12 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@echo [INFO] Fractol Object Files Directory Destroyed
 	@make -C $(LFT_DIR) clean
+	@make -C $(MINILIBX_DIR) clean
 
 fclean: clean
 	@$(RM) $(NAME)
 	@echo [INFO] Fractol Binary Destroyed
 	@make -C $(LFT_DIR) fclean
-	@make -C $(MINILIBX_DIR)
+	@make -C $(MINILIBX_DIR) clean
 
 re: fclean all

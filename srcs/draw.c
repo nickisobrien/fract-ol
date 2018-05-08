@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 07:17:30 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 07:44:45 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static void		draw_from(t_world *w, int a, int end)
 	float		imagstart;
 	float		imag;
 
-	real = 0 * w->cam.s - WIDTH / 2.0 * w->cam.s + w->cam.x + (w->cam.s * a);
-	imagstart = 0 * w->cam.s - HEIGHT / 2.0 * w->cam.s + w->cam.y;
+	real = 0.0 * w->cam.s - WIDTH / 2.0 * w->cam.s + w->cam.x + (w->cam.s * (float)a);
+	imagstart = 0.0 * w->cam.s - HEIGHT / 2.0 * w->cam.s + w->cam.y;
 	a -= 1;
 	while (++a < end && a < WIDTH)
 	{
