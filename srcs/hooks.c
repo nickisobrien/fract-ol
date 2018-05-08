@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 23:26:39 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 00:36:18 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,17 @@
 int		key_pressed_hook(int key, t_world *w)
 {
 	if (key == 123 || key == 0)
-	{
-		w->cam.left -= 0.03;
-		w->cam.right -= 0.03;
-	}
+		w->cam.x -= MOVE_SPEED;
 	else if (key == 124 || key == 2)
-	{
-		w->cam.left += 0.03;
-		w->cam.right += 0.03;
-	}
+		w->cam.x += MOVE_SPEED;
 	else if (key == 125 || key == 1)
-	{
-		w->cam.bottom += 0.03;
-		w->cam.top += 0.03;
-	}
+		w->cam.y += MOVE_SPEED;
 	else if (key == 126 || key == 13)
-	{
-		w->cam.bottom -= 0.03;
-		w->cam.top -= 0.03;
-	}
+		w->cam.y -= MOVE_SPEED;
 	else if (key == 12)
-	{
-		w->cam.top *= ZOOM_SPEED;
-		w->cam.bottom *= ZOOM_SPEED;
-		w->cam.left *= ZOOM_SPEED;
-		w->cam.right *= ZOOM_SPEED;
-		w->cam.s *= ZOOM_SPEED; //need to do some adjusting on x and y to make it zoom to middle
-	}
+		w->cam.s *= ZOOM_SPEED;
 	else if (key == 14)
-		w->cam.s /= ZOOM_SPEED; //need to do some adjusting on x and y to make it zoom to middle
+		w->cam.s /= ZOOM_SPEED;
 	else if (key == 8)
 		w->frac.color = (int)rand();
 	else if (key == 53)
@@ -64,7 +46,6 @@ int		key_pressed_hook(int key, t_world *w)
 
 int		mouse_wheel_hook(int button, int x, int y, t_world *w)
 {
-	(void)w;
 	(void)x;
 	(void)y;
 	if (button == 4)

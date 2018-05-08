@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 23:25:00 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 00:38:21 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void	init(t_world *w, char *board)
 		usage();
 	w->mlx = mlx_init();
 	w->window = mlx_new_window(w->mlx, WIDTH, HEIGHT, WINDOW_NAME);
-	w->cam.s = 5;
-	w->cam.left = -1;
-	w->cam.right = 1;
-	w->cam.top = -1;
-	w->cam.bottom = 1;
+	w->cam.s = 0.02;
+	w->cam.x = 0.0;
+	w->cam.y = 0.0;
 	w->frac.color = random();
 	w->frac.eb = COLORB;
 	w->mouse.x = 0;

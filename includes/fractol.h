@@ -6,12 +6,12 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 23:39:22 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 00:32:19 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FDF_H
-# define __FDF_H
+#ifndef __FRACTOL_H
+# define __FRACTOL_H
 
 #define _GNU_C_SOURCE
 # include "../libft/includes/libft.h"
@@ -27,13 +27,12 @@
 # define COLORA 0
 # define COLORB 12000000
 # define LASTCOLOR 2000
+# define MOVE_SPEED 0.05
 
 typedef struct	s_camera
 {
-	float left;
-	float right;
-	float top;
-	float bottom;
+	float x;
+	float y;
 	float s;
 }				t_camera;
 

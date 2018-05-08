@@ -6,6 +6,7 @@ FLAGS = -Wall -Wextra -Werror
 # fractol
 FILES = main image usage hooks draw helpers
 INCLUDE = -I ./includes/
+HEADER = ./includes/fractol.h
 SRC_DIR := ./srcs/
 OBJ_DIR := ./objs/
 CFILES = $(patsubst %, $(SRC_DIR)%.c, $(FILES))
@@ -35,7 +36,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@echo [INFO] Fractol Object Files Directory Created
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 	gcc $(FLAGS) $(INCLUDE) $(LFT_INC) -o $@ -c $<
 
 $(NAME): $(OBJ_DIR) $(OFILES)

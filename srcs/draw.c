@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 23:36:45 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 00:40:22 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,28 @@ void		draw(t_world *w)
 	int		a;
 	int		b;
 	int		color;
+	double	real;
+	double	imagstart;
+	double	imag;
 
+	real = 0 * w->cam.s - WIDTH / 2.0 * w->cam.s + w->cam.x;
+	imagstart = 0 * w->cam.s - HEIGHT / 2.0 * w->cam.s + w->cam.y;
 	clear_image(w);
 	a = -1;
 	while (++a < WIDTH)
 	{
+		imag = imagstart;
 		b = -1;
 		while (++b < HEIGHT)
 		{
 			if (w->frac.frac == 0 || w->frac.frac == 1)
-				color = draw_mandelbrot(w, ft_fmap(a, 0, WIDTH, w->cam.left * w->cam.s, w->cam.right * w->cam.s), ft_fmap(b, 0, HEIGHT, w->cam.top * w->cam.s, w->cam.bottom * w->cam.s));
+				color = draw_mandelbrot(w, real, imag);
 			else if (w->frac.frac == 2)
-				color = draw_burningship(ft_fmap(a, 0, WIDTH, w->cam.left * w->cam.s, w->cam.right * w->cam.s), ft_fmap(b, 0, HEIGHT, w->cam.top * w->cam.s, w->cam.bottom * w->cam.s));
+				color = draw_burningship(real, imag);
 			set_color(w, color, a, b);
+			imag += w->cam.s;
 		}
+		real += w->cam.s;
 	}
 	mlx_put_image_to_window(w->mlx, w->window, w->image.image, 0, 0);
 }
