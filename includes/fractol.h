@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 21:07:00 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:16:50 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define HEIGHT 720
 # define WINDOW_NAME "Window"
 # define ZOOM_SPEED 1.05
+# define MAX_ITER 100
 
 typedef struct	s_camera
 {

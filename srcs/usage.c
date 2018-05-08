@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:02:42 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 18:19:15 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:30:00 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	usage(void)
 {
 	ft_printf("Usage: ./fractol [fractal]\n");
-	ft_printf("Fractals:\n-(m)andelbrot\n-(j)ulia\n-(t)ree\n");
+	ft_printf("Fractals:\n'1': Mandelbrot\n'2': Julia\n'3': Burningship\n");
+	exit(-1);
 }
 
 void	key_menu(void)

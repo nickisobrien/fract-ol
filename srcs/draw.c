@@ -6,33 +6,26 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 21:07:58 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:32:27 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void		draw_mandelbrot(t_world *w, int a, int b)
+int			draw_mandelbrot(t_world *w, float x, float y)
 {
-	float	x;
-	float	y;
 	float	zx;
 	float	zy;
 	float	xx;
 	float	yy;
 	int		iter;
-	int		maxiter;
-	float	bright;
 	float	twoab;
 
-	maxiter = 100;
-	x = ft_fmap(a, 0, WIDTH, w->cam.left * w->cam.s, w->cam.right * w->cam.s);
-	y = ft_fmap(b, 0, HEIGHT, w->cam.top * w->cam.s, w->cam.bottom * w->cam.s);
 	zx = x;
 	zy = y;
 	set_frac(w, &zx, &zy);
 	iter = -1;
-	while (++iter < maxiter)
+	while (++iter < MAX_ITER)
 	{
 		xx = x * x;
 		yy = y * y;
@@ -42,33 +35,21 @@ void		draw_mandelbrot(t_world *w, int a, int b)
 		x = xx - yy + zx;
 		y = twoab + zy;
 	}
-	bright = ft_fmap(iter, 0, maxiter, 0, 1);//setting color based on how many iterations there were
-	bright = ft_fmap(sqrt(bright), 0, 1, 0, w->frac.effect);
-	if (iter == maxiter)
-		bright = w->frac.color;
-	img_pixel_put(&w->image, a, b, bright);
+	return (iter);
 }
 
-void		draw_burningship(t_world *w, int a, int b)
+int			draw_burningship(float x, float y)
 {
-	float	x;
-	float	y;
 	float	zx;
 	float	zy;
 	float	zxzx;
 	float	zyzy;
 	int		iter;
-	int		maxiter;
-	float	bright;
 
-	maxiter = 100;
-	x = ft_fmap(a, 0, WIDTH, w->cam.left * w->cam.s, w->cam.right * w->cam.s);
-	y = ft_fmap(b, 0, HEIGHT, w->cam.top * w->cam.s, w->cam.bottom * w->cam.s);
 	zx = x;
 	zy = y;
-	set_frac(w, &zx, &zy);
 	iter = -1;
-	while (++iter < maxiter)
+	while (++iter < MAX_ITER)
 	{
 		zxzx = zx * zx;
 		zyzy = zy * zy;
@@ -77,9 +58,16 @@ void		draw_burningship(t_world *w, int a, int b)
 		zy = fabsf(2 * zx * zy) + y;
 		zx = fabsf(zxzx - zyzy + x);
 	}
-	bright = ft_fmap(iter, 0, maxiter, 0, 1);//setting color based on how many iterations there were
+	return (iter);
+}
+
+void		set_color(t_world *w, int color, int a, int b)
+{
+	float bright;
+
+	bright = ft_fmap(color, 0, MAX_ITER, 0, 1);
 	bright = ft_fmap(sqrt(bright), 0, 1, 0, w->frac.effect);
-	if (iter == maxiter)
+	if (color == MAX_ITER)
 		bright = w->frac.color;
 	img_pixel_put(&w->image, a, b, bright);
 }
@@ -88,7 +76,9 @@ void		draw(t_world *w)
 {
 	int		a;
 	int		b;
+	int		color;
 
+	clear_image(w);
 	a = -1;
 	while (++a < WIDTH)
 	{
@@ -96,9 +86,10 @@ void		draw(t_world *w)
 		while (++b < HEIGHT)
 		{
 			if (w->frac.frac == 0 || w->frac.frac == 1)
-				draw_mandelbrot(w, a, b);
+				color = draw_mandelbrot(w, ft_fmap(a, 0, WIDTH, w->cam.left * w->cam.s, w->cam.right * w->cam.s), ft_fmap(b, 0, HEIGHT, w->cam.top * w->cam.s, w->cam.bottom * w->cam.s));
 			else if (w->frac.frac == 2)
-				draw_burningship(w, a, b);
+				color = draw_burningship(ft_fmap(a, 0, WIDTH, w->cam.left * w->cam.s, w->cam.right * w->cam.s), ft_fmap(b, 0, HEIGHT, w->cam.top * w->cam.s, w->cam.bottom * w->cam.s));
+			set_color(w, color, a, b);
 		}
 	}
 	mlx_put_image_to_window(w->mlx, w->window, w->image.image, 0, 0);

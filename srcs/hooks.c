@@ -6,13 +6,13 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 21:05:42 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:32:46 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int			key_pressed_hook(int key, t_world *w)
+int		key_pressed_hook(int key, t_world *w)
 {
 	if (key == 123 || key == 0)
 	{
@@ -52,7 +52,6 @@ int			key_pressed_hook(int key, t_world *w)
 		w->frac.frac = 1;
 	else if (key == 20)
 		w->frac.frac = 2;
-	clear_image(w);
 	draw(w);
 	return (0);
 }
@@ -66,7 +65,6 @@ int		mouse_wheel_hook(int button, int x, int y, t_world *w)
 		w->cam.s *= ZOOM_SPEED;
 	if (button == 5)
 		w->cam.s /= ZOOM_SPEED;
-	clear_image(w);
 	draw(w);
 	return (0);
 }
@@ -79,7 +77,6 @@ int		mouse_moved_hook(int x, int y, t_world *w)
 			w->mouse.x = x;
 		if (y > 0 && y < HEIGHT)
 			w->mouse.y = y;
-		clear_image(w);
 		draw(w);
 	}
 	return (0);

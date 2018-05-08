@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/07 21:01:04 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/07 21:31:09 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@ void	init(t_world *w, char *board)
 	w->cam.bottom = 1;
 	w->frac.color = 0xffffff;
 	w->frac.effect = 255;
-	if (!ft_strcmp(board, "0"))
+	if (!ft_strcmp(board, "1"))
 		w->frac.frac = 0;
-	else if (!ft_strcmp(board, "1"))
-		w->frac.frac = 1;
 	else if (!ft_strcmp(board, "2"))
+		w->frac.frac = 1;
+	else if (!ft_strcmp(board, "3"))
 		w->frac.frac = 2;
+	else
+		usage();
 	w->mouse.x = 0;
 	w->mouse.y = 0;
 	init_image(w);
 	mlx_hook(w->window, 2, 0, key_pressed_hook, w);
 	mlx_hook(w->window, 6, 0, mouse_moved_hook, w);
 	mlx_hook(w->window, 4, 0, mouse_wheel_hook, w);
-	clear_image(w);
 	draw(w);
 	key_menu();
 }
@@ -45,11 +46,8 @@ int		main(int argc, char **argv)
 	t_world w;
 
 	if (argc != 2)
-	{
 		usage();
-		return (-1);
-	}
-	init(&w, argv[1]);	
+	init(&w, argv[1]);
 	mlx_loop(w.mlx);
 	return (0);
 }
