@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 02:49:36 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 03:16:33 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ void		set_color(t_world *w, int color, int a, int b)
 	img_pixel_put(&w->image, a, b, bright);
 }
 
-void			*draw_thread(void *obj)
+void		*draw_thread(void *obj)
 {
 	int color;
 	int b;
-	t_data data = *(t_data *)obj;
+	t_data data;
 
+	data = *(t_data *)obj;
 	b = -1;
 	while (++b < HEIGHT)
 	{

@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 02:41:28 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 03:10:52 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <math.h>
 # include <pthread.h>
 
-# define WIDTH 720
-# define HEIGHT 720
+# define WIDTH 1200
+# define HEIGHT 1200
 # define WINDOW_NAME "Window"
 # define ZOOM_SPEED 1.05
-# define MAX_ITER 100
+# define MAX_ITER 250
 # define COLORA 0
 # define COLORB 12000000
 # define LASTCOLOR 2000
