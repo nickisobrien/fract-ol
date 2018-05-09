@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 21:18:32 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 23:53:53 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void		set_color(t_world *w, int color, int a, int b)
 
 	if (color != w->max_iter)
 	{
-		bright = (0.0 + ((1.0 - 0.0) / (w->max_iter - 0.0)) * (color - 0.0));
-		bright = (w->frac.eb + ((LASTCOLOR - w->frac.eb) /
-			(1.0 - 0.0)) * (sqrt(bright) - 0.0));
+		bright = ((1.0 / w->max_iter) * color);
+		bright = (w->frac.eb + ((LASTCOLOR * (1000000.0 / w->frac.color)
+			- w->frac.eb) / 1.0) * sqrt(bright));
 	}
 	else
 		bright = w->frac.color;
