@@ -6,19 +6,19 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 20:20:58 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 20:30:07 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void		set_frac(t_world *w, double *ca, double *cb)
+void		set_frac(t_world *w, long double *ca, long double *cb)
 {
 	if (w->frac.frac == 1)
 	{
-		*ca = (double)(-1.0 + ((1.0 + 1.0) /
+		*ca = (long double)(-1.0 + ((1.0 + 1.0) /
 			(WIDTH - 0.0)) * (w->mouse.x - 0.0));
-		*cb = (double)(-1.0 + ((1.0 + 1.0) /
+		*cb = (long double)(-1.0 + ((1.0 + 1.0) /
 			(WIDTH - 0.0)) * (w->mouse.y - 0.0));
 	}
 }
@@ -44,7 +44,7 @@ void		error(void)
 
 void		set_color(t_world *w, int color, int a, int b)
 {
-	double bright;
+	long double bright;
 
 	if (color != MAX_ITER)
 	{

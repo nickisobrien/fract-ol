@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 20:28:08 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 20:33:59 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@
 
 typedef struct	s_camera
 {
-	double		x;
-	double		y;
-	double		s;
+	long double	x;
+	long double	y;
+	long double	s;
 }				t_camera;
 
 typedef struct	s_mouse
 {
-	double		x;
-	double		y;
+	long double	x;
+	long double	y;
 	int			active;
 }				t_mouse;
 
@@ -91,7 +91,7 @@ int				mouse_wheel_hook(int button, int x, int y, t_world *w);
 void			draw(t_world *w);
 
 void			set_color(t_world *w, int color, int a, int b);
-void			set_frac(t_world *w, double *ca, double *cb);
+void			set_frac(t_world *w, long double *ca, long double *cb);
 int				set_board_type(t_world *w, char *board);
 void			error(void);
 

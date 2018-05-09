@@ -6,19 +6,19 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 20:24:41 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 20:34:28 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-static int		draw_mandelbrot(t_world *w, double x, double y)
+static int		draw_mandelbrot(t_world *w, long double x, long double y)
 {
-	double	zx;
-	double	zy;
-	double	xx;
-	double	yy;
-	int		iter;
+	long double	zx;
+	long double	zy;
+	long double	xx;
+	long double	yy;
+	int			iter;
 
 	zx = x;
 	zy = y;
@@ -36,13 +36,13 @@ static int		draw_mandelbrot(t_world *w, double x, double y)
 	return (iter);
 }
 
-static int		draw_burningship(double x, double y)
+static int		draw_burningship(long double x, long double y)
 {
-	double	zx;
-	double	zy;
-	double	zxzx;
-	double	zyzy;
-	int		iter;
+	long double	zx;
+	long double	zy;
+	long double	zxzx;
+	long double	zyzy;
+	int			iter;
 
 	zx = x;
 	zy = y;
@@ -53,8 +53,8 @@ static int		draw_burningship(double x, double y)
 		zyzy = zy * zy;
 		if (zxzx + zyzy > 6.0)
 			return (iter);
-		zy = fabs(2 * zx * zy) + y;
-		zx = fabs(zxzx - zyzy + x);
+		zy = fabsl(2 * zx * zy) + y;
+		zx = fabsl(zxzx - zyzy + x);
 	}
 	return (iter);
 }
@@ -63,12 +63,12 @@ static void		draw_from(t_world *w, int a, int end)
 {
 	int			b;
 	int			color;
-	double		real;
-	double		imagstart;
-	double		imag;
+	long double	real;
+	long double	imagstart;
+	long double	imag;
 
 	real = 0.0 * w->cam.s - WIDTH / 2.0 *
-	w->cam.s + w->cam.x + (w->cam.s * (double)a);
+	w->cam.s + w->cam.x + (w->cam.s * (long double)a);
 	imagstart = 0.0 * w->cam.s - HEIGHT / 2.0 * w->cam.s + w->cam.y;
 	a -= 1;
 	while (++a < end && a < WIDTH)
