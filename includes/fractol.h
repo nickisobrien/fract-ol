@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/09 03:24:41 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/09 03:33:38 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH 770
 # define HEIGHT 770
 # define WINDOW_NAME "Window"
-# define ZOOM_SPEED 1.05
+# define ZOOM_SPEED 1.12
 # define STARTING_ITER 100
 # define COLORA 5000000
 # define COLORB 120000
