@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 20:18:34 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 21:16:22 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ static void	set_board(int key, t_world *w)
 		w->frac.frac = 1;
 	else if (key == 20)
 		w->frac.frac = 2;
+}
+
+static void	more_key_hooks(int key, t_world *w)
+{
+	if (key == 8)
+		w->frac.color /= 1.05;
+	else if (key == 9)
+		w->max_iter *= 1.05;
+	else if (key == 11)
+		w->max_iter /= 1.05;
+	else if (key == 15)
+		reset(w);
+	else if (key == 53)
+		exit(0);
+	else if (key == 6)
+		w->frac.eb = COLORA;
+	else if (key == 7)
+		w->frac.eb = COLORB;
 }
 
 int			key_pressed_hook(int key, t_world *w)
@@ -36,14 +54,7 @@ int			key_pressed_hook(int key, t_world *w)
 		w->cam.s *= ZOOM_SPEED;
 	else if (key == 14)
 		w->cam.s /= ZOOM_SPEED;
-	else if (key == 8)
-		w->frac.color -= 20;
-	else if (key == 53)
-		exit(0);
-	else if (key == 6)
-		w->frac.eb = COLORA;
-	else if (key == 7)
-		w->frac.eb = COLORB;
+	more_key_hooks(key, w);
 	set_board(key, w);
 	draw(w);
 	return (0);

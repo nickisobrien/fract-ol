@@ -6,13 +6,13 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 15:46:24 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 20:41:13 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 21:19:35 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	init(t_world *w, char *board)
+static void	init(t_world *w, char *board)
 {
 	if (!set_board_type(w, board))
 		usage();
@@ -21,10 +21,11 @@ void	init(t_world *w, char *board)
 	w->cam.s = 0.02;
 	w->cam.x = 0.0;
 	w->cam.y = 0.0;
-	w->frac.color = 0xffffff/2;
+	w->frac.color = 0xffffff;
 	w->frac.eb = COLORB;
 	w->mouse.x = 0;
 	w->mouse.y = 0;
+	w->max_iter = STARTING_ITER;
 	w->mouse.active = 1;
 	init_image(w);
 	mlx_hook(w->window, 2, 0, key_pressed_hook, w);
@@ -34,7 +35,7 @@ void	init(t_world *w, char *board)
 	draw(w);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_world w;
 

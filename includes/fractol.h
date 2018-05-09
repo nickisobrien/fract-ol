@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 20:39:07 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 21:13:33 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEIGHT 770
 # define WINDOW_NAME "Window"
 # define ZOOM_SPEED 1.05
-# define MAX_ITER 100
+# define STARTING_ITER 150
 # define COLORA 5000000
 # define COLORB 120000
 # define LASTCOLOR 0xffffff/2
@@ -64,7 +64,7 @@ typedef struct	s_world
 {
 	void		*mlx;
 	void		*window;
-	int			line;
+	long double	max_iter;
 	t_camera	cam;
 	t_fractal	frac;
 	t_mouse		mouse;
@@ -94,5 +94,6 @@ void			set_color(t_world *w, int color, int a, int b);
 void			set_frac(t_world *w, long double *ca, long double *cb);
 int				set_board_type(t_world *w, char *board);
 void			error(void);
+void			reset(t_world *w);
 
 #endif

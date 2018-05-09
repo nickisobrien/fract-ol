@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 20:34:28 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 20:53:52 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int		draw_mandelbrot(t_world *w, long double x, long double y)
 	zy = y;
 	set_frac(w, &zx, &zy);
 	iter = -1;
-	while (++iter < MAX_ITER)
+	while (++iter < w->max_iter)
 	{
 		xx = x * x;
 		yy = y * y;
@@ -36,7 +36,7 @@ static int		draw_mandelbrot(t_world *w, long double x, long double y)
 	return (iter);
 }
 
-static int		draw_burningship(long double x, long double y)
+static int		draw_burningship(t_world *w, long double x, long double y)
 {
 	long double	zx;
 	long double	zy;
@@ -47,7 +47,7 @@ static int		draw_burningship(long double x, long double y)
 	zx = x;
 	zy = y;
 	iter = -1;
-	while (++iter < MAX_ITER)
+	while (++iter < w->max_iter)
 	{
 		zxzx = zx * zx;
 		zyzy = zy * zy;
@@ -80,7 +80,7 @@ static void		draw_from(t_world *w, int a, int end)
 			if (w->frac.frac == 0 || w->frac.frac == 1)
 				color = draw_mandelbrot(w, real, imag);
 			else if (w->frac.frac == 2)
-				color = draw_burningship(real, imag);
+				color = draw_burningship(w, real, imag);
 			set_color(w, color, a, b);
 			imag += w->cam.s;
 		}
