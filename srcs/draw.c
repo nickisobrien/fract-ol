@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 23:18:10 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/09 03:51:00 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int		draw_mandelbrot(t_world *w, long double x, long double y)
 	{
 		xx = x * x;
 		yy = y * y;
-		if (xx + yy > 6.0)
+		if (xx + yy > 4.0)
 			return (iter);
 		y = (2.0 * x * y) + zy;
 		x = xx - yy + zx;
@@ -40,8 +40,8 @@ static int		draw_burningship(t_world *w, long double x, long double y)
 {
 	long double	zx;
 	long double	zy;
-	long double	zxzx;
-	long double	zyzy;
+	long double	xx;
+	long double	yy;
 	int			iter;
 
 	zx = x;
@@ -49,12 +49,12 @@ static int		draw_burningship(t_world *w, long double x, long double y)
 	iter = -1;
 	while (++iter < w->max_iter)
 	{
-		zxzx = zx * zx;
-		zyzy = zy * zy;
-		if (zxzx + zyzy > 6.0)
+		xx = x * x;
+		yy = y * y;
+		if (xx + yy > 4.0)
 			return (iter);
-		zy = fabsl(2 * zx * zy) + y;
-		zx = fabsl(zxzx - zyzy + x);
+		y = fabsl((2.0 * x * y)) + zy;
+		x = fabsl(xx - yy + zx);
 	}
 	return (iter);
 }
