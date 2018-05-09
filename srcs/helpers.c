@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 06:29:03 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 19:49:59 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,13 @@ void		set_color(t_world *w, int color, int a, int b)
 {
 	float bright;
 
-	bright = (0.0 + ((1.0 - 0.0) / (MAX_ITER - 0.0)) * (color - 0.0));
-	bright = (w->frac.eb + ((LASTCOLOR - w->frac.eb) /
-		(1.0 - 0.0)) * (sqrt(bright) - 0.0));
-	if (color == MAX_ITER)
+	if (color != MAX_ITER)
+	{
+		bright = (0.0 + ((1.0 - 0.0) / (MAX_ITER - 0.0)) * (color - 0.0));
+		bright = (w->frac.eb + ((LASTCOLOR - w->frac.eb) /
+			(1.0 - 0.0)) * (sqrt(bright) - 0.0));
+	}
+	else
 		bright = w->frac.color;
 	img_pixel_put(&w->image, a, b, bright);
 }
