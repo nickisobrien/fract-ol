@@ -6,18 +6,18 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:51:23 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 19:51:33 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 20:24:41 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-static int		draw_mandelbrot(t_world *w, float x, float y)
+static int		draw_mandelbrot(t_world *w, double x, double y)
 {
-	float	zx;
-	float	zy;
-	float	xx;
-	float	yy;
+	double	zx;
+	double	zy;
+	double	xx;
+	double	yy;
 	int		iter;
 
 	zx = x;
@@ -36,12 +36,12 @@ static int		draw_mandelbrot(t_world *w, float x, float y)
 	return (iter);
 }
 
-static int		draw_burningship(float x, float y)
+static int		draw_burningship(double x, double y)
 {
-	float	zx;
-	float	zy;
-	float	zxzx;
-	float	zyzy;
+	double	zx;
+	double	zy;
+	double	zxzx;
+	double	zyzy;
 	int		iter;
 
 	zx = x;
@@ -53,8 +53,8 @@ static int		draw_burningship(float x, float y)
 		zyzy = zy * zy;
 		if (zxzx + zyzy > 6.0)
 			return (iter);
-		zy = fabsf(2 * zx * zy) + y;
-		zx = fabsf(zxzx - zyzy + x);
+		zy = fabs(2 * zx * zy) + y;
+		zx = fabs(zxzx - zyzy + x);
 	}
 	return (iter);
 }
@@ -63,12 +63,12 @@ static void		draw_from(t_world *w, int a, int end)
 {
 	int			b;
 	int			color;
-	float		real;
-	float		imagstart;
-	float		imag;
+	double		real;
+	double		imagstart;
+	double		imag;
 
 	real = 0.0 * w->cam.s - WIDTH / 2.0 *
-	w->cam.s + w->cam.x + (w->cam.s * (float)a);
+	w->cam.s + w->cam.x + (w->cam.s * (double)a);
 	imagstart = 0.0 * w->cam.s - HEIGHT / 2.0 * w->cam.s + w->cam.y;
 	a -= 1;
 	while (++a < end && a < WIDTH)

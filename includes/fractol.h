@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 07:33:19 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 20:28:08 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEIGHT 770
 # define WINDOW_NAME "Window"
 # define ZOOM_SPEED 1.05
-# define MAX_ITER 300
+# define MAX_ITER 100
 # define COLORA 0
 # define COLORB 12000000
 # define LASTCOLOR 2000
@@ -32,15 +32,15 @@
 
 typedef struct	s_camera
 {
-	float		x;
-	float		y;
-	float		s;
+	double		x;
+	double		y;
+	double		s;
 }				t_camera;
 
 typedef struct	s_mouse
 {
-	float		x;
-	float		y;
+	double		x;
+	double		y;
 	int			active;
 }				t_mouse;
 
@@ -91,7 +91,7 @@ int				mouse_wheel_hook(int button, int x, int y, t_world *w);
 void			draw(t_world *w);
 
 void			set_color(t_world *w, int color, int a, int b);
-void			set_frac(t_world *w, float *ca, float *cb);
+void			set_frac(t_world *w, double *ca, double *cb);
 int				set_board_type(t_world *w, char *board);
 void			error(void);
 
