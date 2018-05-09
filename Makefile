@@ -1,7 +1,7 @@
 NAME = fractol
 RM = /bin/rm -f
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O2
 
 # fractol
 FILES = main image usage hooks draw helpers

@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 23:22:23 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/09 03:24:41 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define LASTCOLOR 0xffffff
 # define MOVE_SPEED 0.05
 # define THREADS 4
+# define MOVE_FACTOR 700
 
 typedef struct	s_camera
 {

@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:54:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 23:53:53 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/09 02:54:17 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void		set_frac(t_world *w, long double *ca, long double *cb)
 {
 	if (w->frac.frac == 1)
 	{
-		*ca = (long double)(-1.0 + ((1.0 + 1.0) /
-			(WIDTH - 0.0)) * (w->mouse.x - 0.0));
-		*cb = (long double)(-1.0 + ((1.0 + 1.0) /
-			(WIDTH - 0.0)) * (w->mouse.y - 0.0));
+		*ca = -1.0 + 2.0 / WIDTH * w->mouse.x;
+		*cb = -1.0 + 2.0 / HEIGHT * w->mouse.y;
 	}
 }
 

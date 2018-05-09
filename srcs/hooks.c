@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:49:28 by nobrien           #+#    #+#             */
-/*   Updated: 2018/05/08 21:16:22 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/09 03:24:29 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 static void	set_board(int key, t_world *w)
 {
 	if (key == 18)
+	{
+		reset(w);
 		w->frac.frac = 0;
+	}
 	else if (key == 19)
+	{
+		reset(w);
 		w->frac.frac = 1;
+	}
 	else if (key == 20)
+	{
+		reset(w);
 		w->frac.frac = 2;
+	}
 }
 
 static void	more_key_hooks(int key, t_world *w)
@@ -43,13 +52,13 @@ static void	more_key_hooks(int key, t_world *w)
 int			key_pressed_hook(int key, t_world *w)
 {
 	if (key == 123 || key == 0)
-		w->cam.x -= MOVE_SPEED;
+		w->cam.x -= MOVE_SPEED * w->cam.s * MOVE_FACTOR;
 	else if (key == 124 || key == 2)
-		w->cam.x += MOVE_SPEED;
+		w->cam.x += MOVE_SPEED * w->cam.s * MOVE_FACTOR;
 	else if (key == 125 || key == 1)
-		w->cam.y += MOVE_SPEED;
+		w->cam.y += MOVE_SPEED * w->cam.s * MOVE_FACTOR;
 	else if (key == 126 || key == 13)
-		w->cam.y -= MOVE_SPEED;
+		w->cam.y -= MOVE_SPEED * w->cam.s * MOVE_FACTOR;
 	else if (key == 12)
 		w->cam.s *= ZOOM_SPEED;
 	else if (key == 14)
